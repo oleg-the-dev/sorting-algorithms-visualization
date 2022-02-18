@@ -9,21 +9,15 @@ class Settings:
     HEIGHT = 600
 
     # Colors
-    BLACK = (0, 0, 0)
-    ALICEBLUE = (30, 40, 45)
-    GREEN = (0, 255, 0)
+    GRAPHITE = (30, 40, 45)
     BLUE = (0, 0, 205)
     RED = (255, 0, 0)
-    BACKGROUND_COLOR = ALICEBLUE
+    BACKGROUND_COLOR = GRAPHITE
     GRADIENTS = (
         (128, 128, 128),
         (160, 160, 160),
         (192, 192, 192),
     )
-
-    # Fonts
-    FONT = pygame.font.SysFont('Arial', 20)
-    LARGE_FONT = pygame.font.SysFont('Arial', 40)
 
     # Data
     MIN_SIZE = 2
