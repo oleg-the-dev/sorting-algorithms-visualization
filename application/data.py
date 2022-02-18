@@ -2,18 +2,18 @@ import random
 from settings import Settings
 
 
-
 class Data(Settings):
     @classmethod
     def random(cls):
-        data = [random.randint(cls.MIN_VAL, cls.MAX_VAL) for _ in range(cls.SIZE)]
+        data = [random.randint(cls.MIN_VAL, cls.MAX_VAL) for _ in
+                range(cls.SIZE)]
         return data
 
     @classmethod
     def reversed(cls):
-        data = list(
-                    range(cls.SIZE if cls.SIZE > cls.MAX_VAL else cls.MAX_VAL,
-                    cls.MIN_VAL - 1, -1))[:cls.SIZE]
+        data = [random.randint(cls.MIN_VAL, cls.MAX_VAL) for _ in
+                range(cls.SIZE)]
+        data.sort(reverse=True)
         return data
 
     @classmethod

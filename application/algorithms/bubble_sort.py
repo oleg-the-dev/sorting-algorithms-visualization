@@ -4,4 +4,3 @@ def bubble_sort(data, *args):
             yield data, j-1, -1, j, len(data) - i
             if data[j] > data[j + 1]:
                 data[j], data[j + 1] = data[j + 1], data[j]
-

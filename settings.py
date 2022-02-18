@@ -34,5 +34,5 @@ class Settings:
 
     # FPS
     MIN_FPS = 15
-    MAX_FPS = 60
+    MAX_FPS = 240
     FPS = 60

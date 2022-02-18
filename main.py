@@ -1,17 +1,16 @@
 import pygame
-from sys import exit
-from display import Window
-from data import Data
-from settings import Settings
 import pygame_gui
-from context import data_ctx, algo_ctx
+from application.context import data_ctx, algo_ctx
+from application.display import Window
+from settings import Settings
+from sys import exit
+
 
 def main():
     data_type = 'Random'
     algo_type = 'Selection'
 
     data = data_ctx[data_type]()
-    algorithm = algo_ctx[algo_type]
 
     display = Window(data)
     manager = display.manager
@@ -30,6 +29,7 @@ def main():
                 display.draw_bars(generator, red_1, red_2, blue_1, blue_2)
             except StopIteration:
                 sorting = False
+                display.run_btn.set_text('Start')
         else:
             display.draw_bars(data, -1, -1, -1, -1)
 
@@ -39,11 +39,22 @@ def main():
                 pygame.quit()
                 exit()
 
+            # Keyboard Controls
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
+                if event.key == pygame.K_r:
                     data = data_ctx[data_type]()
                     sorting = False
+                if event.key == pygame.K_SPACE:
+                    if not sorting:
+                        sorting = True
+                        display.run_btn.set_text('Stop')
+                        algo_generator = algo_ctx[algo_type](data, 0,
+                                                             len(data) - 1)
+                    else:
+                        sorting = False
+                        display.run_btn.set_text('Start')
 
+            # GUI Events
             if event.type == pygame_gui.UI_DROP_DOWN_MENU_CHANGED:
                 if event.ui_element == display.algo_dropdown:
                     algo_type = event.text
@@ -63,16 +74,21 @@ def main():
                 if event.ui_element == display.run_btn:
                     if not sorting:
                         sorting = True
-                        algo_generator = algo_ctx[algo_type](data, 0, len(data) - 1)
+                        display.run_btn.set_text('Stop')
+                        algo_generator = algo_ctx[algo_type](data, 0,
+                                                             len(data) - 1)
                     else:
                         sorting = False
+                        display.run_btn.set_text('Start')
 
             manager.process_events(event)
 
-        pygame.draw.rect(display.screen, display.BACKGROUND_COLOR, (700, 0, 200, 600))
-        manager.update(clock.tick(60)/1000)
+        pygame.draw.rect(display.screen, display.BACKGROUND_COLOR,
+                         (700, 0, 200, 600))
+        manager.update(clock.tick(60) / 1000)
         manager.draw_ui(display.screen)
         pygame.display.update()
+
 
 if __name__ == '__main__':
     main()
