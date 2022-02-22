@@ -2,7 +2,7 @@
 
 Application made with Python, PyGame and PyGame_GUI for sorting algorithms visualization.
 
-![Demonstration Gif](https://github.com/olpydev/sorting-algorithms-visualization/blob/main/application/demonstration.gif)
+![Demonstration Gif](https://github.com/olpydev/sorting-algorithms-visualization/blob/main/application/images/demonstration.gif)
 
 ## Using Application
 
