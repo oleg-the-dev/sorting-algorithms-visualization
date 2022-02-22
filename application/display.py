@@ -8,7 +8,7 @@ class Window(Settings):
     def __init__(self, data):
         self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
         pygame.display.set_caption('Sorting Algorithms Visualiser')
-        icon = pygame.image.load('application/icon.png')
+        icon = pygame.image.load('application/images/icon.png')
         pygame.display.set_icon(icon)
         self.manager = pygame_gui.UIManager((self.WIDTH, self.HEIGHT))
         self.screen.fill(self.BACKGROUND_COLOR)
